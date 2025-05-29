@@ -1,6 +1,20 @@
 from .strategy import GameStrategy
 from .tic_tac_toe_strategy import TicTacToeStrategy
 
+class GameManager:
+    def __init__(self):
+        self.games = {}
+
+    def create_game(self, game_id):
+        self.games[game_id] = TicTacToeGame(game_id)
+
+    def get_game(self, game_id):
+        return self.games.get(game_id)
+
+    def remove_game(self, game_id):
+        if game_id in self.games:
+            del self.games[game_id]
+
 class TicTacToeGame:
     def __init__(self, game_id: str, strategy: GameStrategy = None):
         self.game_id = game_id
@@ -32,4 +46,11 @@ class TicTacToeGame:
             self.current_turn = next(self.players[player] for player in self.players.keys() if player != player_id)
 
         return True
+    
+    def restart(self, player_id):
+        self.board = [[None for _ in range(3)] for _ in range(3)]
+        self.current_turn = next(self.players[player] for player in self.players.keys() if player != player_id)
+        self.draw = None
+        self.winner = None
+        self.winner_positions = []
 
