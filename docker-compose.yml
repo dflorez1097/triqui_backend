@@ -1,6 +1,6 @@
 services:
   backend:
-    image: daniel/backendtriqui:v0.1
+    image: danielstivenflorez/proyecto_cliente_servidor:v0.1
     build: .
     ports:
       - "8000:8000"
