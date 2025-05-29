@@ -1,5 +1,5 @@
 from fastapi import WebSocket
-from app.game_manager import GameManager, TicTacToeGame
+from .game_manager import GameManager, TicTacToeGame
 from logging import getLogger
 
 log = getLogger("ws_manager")
