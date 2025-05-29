@@ -40,7 +40,7 @@ async def websocket_endpoint(websocket: WebSocket, game_id: int, player_id: str)
     except Exception as e:
         log.error(f"Error in webhook: {e}")
         await ws_manager.disconnect(player_id, game_id)
-        websocket.close()
+        await websocket.close()
 
 
 @app.get("/game_waiting")
